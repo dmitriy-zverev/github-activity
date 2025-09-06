@@ -10,7 +10,7 @@ func filterEvents(events []githubUserData, eventType string) []githubUserData {
 	var newEvents []githubUserData
 
 	for _, event := range events {
-		if strings.Contains(strings.ToLower(event.Type), eventType) {
+		if strings.Contains(strings.ToLower(event.Type), strings.ToLower(eventType)) {
 			newEvents = append(newEvents, event)
 		}
 	}
