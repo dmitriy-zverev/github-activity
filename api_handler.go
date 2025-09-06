@@ -16,7 +16,7 @@ type githubUserData struct {
 
 func fetchGithubUserData(username string) ([]githubUserData, error) {
 	url := fmt.Sprintf(
-		"https://api.github.com/users/%s/events?per_page=10",
+		"https://api.github.com/users/%s/events",
 		username,
 	)
 
