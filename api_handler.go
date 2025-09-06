@@ -7,10 +7,12 @@ import (
 	"net/http"
 )
 
-func fetchGithubUserData(username string) ([]githubUserData, error) {
+func fetchGithubUserData(username, page, perPage string) ([]githubUserData, error) {
 	url := fmt.Sprintf(
-		"https://api.github.com/users/%s/events?per_page=100",
+		"https://api.github.com/users/%s/events?page=%s&per_page=%s",
 		username,
+		page,
+		perPage,
 	)
 
 	req, err := http.NewRequest("GET", url, nil)

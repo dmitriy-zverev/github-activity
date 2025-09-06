@@ -13,3 +13,9 @@ const (
 	MEMBER_EVENT         = "MemberEvent"
 	RELEASE_EVENT        = "ReleaseEvent"
 )
+
+const (
+	DEFAULT_PAGE_NUM        = "1"
+	DEFAULT_PER_PAGE_EVENTS = "30"
+	DEFAULT_FILTER_TYPE     = ""
+)

@@ -1,10 +1,15 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
 func printer(userActivities []githubUserData) error {
+	if len(userActivities) < 1 {
+		return errors.New("found no user activity")
+	}
+
 	for _, activity := range userActivities {
 		userActivityString, err := activityString(activity)
 		if err != nil {
