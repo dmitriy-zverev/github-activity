@@ -7,16 +7,9 @@ import (
 	"net/http"
 )
 
-type githubUserData struct {
-	Type string `json:"type"`
-	Repo struct {
-		Name string `json:"name"`
-	} `json:"repo"`
-}
-
 func fetchGithubUserData(username string) ([]githubUserData, error) {
 	url := fmt.Sprintf(
-		"https://api.github.com/users/%s/events",
+		"https://api.github.com/users/%s/events?per_page=100",
 		username,
 	)
 
@@ -43,10 +36,6 @@ func fetchGithubUserData(username string) ([]githubUserData, error) {
 	var dat []githubUserData
 	if err := json.NewDecoder(res.Body).Decode(&dat); err != nil {
 		return []githubUserData{}, err
-	}
-
-	for _, item := range dat {
-		fmt.Printf("  - %s to %s\n", item.Type, item.Repo.Name)
 	}
 
 	return dat, nil
